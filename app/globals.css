@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #0F172A;
+  background: #F7F8FA;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Single orchestrated draw-in for the hero route line */
+.route-line {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: draw-route 1.6s 0.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes draw-route {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.route-dot {
+  opacity: 0;
+  animation: dot-in 0.5s ease-out forwards;
+}
+
+@keyframes dot-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid #F4791D;
+  outline-offset: 2px;
+}
